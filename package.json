@@ -1,0 +1,32 @@
+{
+  "name": "test",
+  "version": "0.15.0",
+  "description": "Frontend HTML5 app for the website",
+  "engine": "node >= 0.10.26",
+  "main": "",
+  "scripts": {
+    "avoidcommits": " if [ $(git rev-parse --abbrev-ref HEAD | grep  -E '^(stable|master)$') ]; then echo 'You are not available to commit on this branch!';exit 1;fi;exit 0 ",
+    "avoidpushes": "if [ $(git symbolic-ref HEAD | grep -E 'refs/heads/(stable|master)$') ]; then echo 'You are not available to push on this branch!';exit 1;fi;exit 0 "
+  },
+  "publishConfig": {
+    "registry": "http://npm.eceit.net/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ThomasCookOnline/web-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThomasCookOnline/frontend/web-ui"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "pre-commit": "~1.0.10",
+    "pre-push": "~0.1.1",
+  },
+  "pre-commit": [
+    "avoidcommits"
+  ],
+  "pre-push": [
+    "avoidpushes"
+  ]
+}
